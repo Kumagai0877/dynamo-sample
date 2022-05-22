@@ -14,7 +14,7 @@ import (
 type Track struct {
 	DeviceID  string `dynamo:"deviceID,hash"`
 	Timestamp int64  `dynamo:"timestamp, range"`
-	Value     int  `dynamo:"value"`
+	Value     int    `dynamo:"value"`
 }
 
 const AWS_REGION = "ap-northeast-1"
@@ -32,7 +32,7 @@ func main() {
 		panic(err)
 	}
 	db := dynamo.New(sess)
-	table := db.Table("Tracks")
+	table := db.Table("tracks")
 
 	// 引数のデバイスIDを変数化
 	deviceID := flag.String("deviceID", "1", "Specify the device ID.")

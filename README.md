@@ -14,30 +14,10 @@ make up
 ローカルのDynamoDBの管理コンソールを表示します
 ```
 npm install -g
-dynamodb-admin dynamodb-admin
+dynamodb-admin
 ```
 
-下記の設定になるようにテーブルを作成します（コマンドで作れる様にする予定）
+テーブル作成
 ```
-"AttributeDefinitions": [
-    {
-      "AttributeName": "deviceID",
-      "AttributeType": "S"
-    },
-    {
-      "AttributeName": "timestamp",
-      "AttributeType": "N"
-    }
-  ],
-  "TableName": "Tracks",
-  "KeySchema": [
-    {
-      "AttributeName": "deviceID",
-      "KeyType": "HASH"
-    },
-    {
-      "AttributeName": "timestamp",
-      "KeyType": "RANGE"
-    }
-  ],
+make create-table
 ```
