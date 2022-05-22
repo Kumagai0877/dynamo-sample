@@ -1,0 +1,27 @@
+version: "3"
+services:
+  api:
+    image: api:latest
+    container_name: api
+    command: /bin/sh -c "/app/api-linux-amd64"
+    tty: true
+    ports:
+      - "8080:8080"
+    build:
+      context: ../
+      dockerfile: "build/Dockerfile"
+    depends_on:
+      - dynamodb-local
+    volumes:
+      - ../.artifacts/:/app/
+  dynamodb-local:
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath ./data"
+    image: "amazon/dynamodb-local:latest"
+    container_name: dynamodb-local
+    ports:
+      - "8000:8000"
+    volumes:
+      - "./db:/home/dynamodblocal/data"
+    build:
+      context: ../
+    working_dir: /home/dynamodblocal
