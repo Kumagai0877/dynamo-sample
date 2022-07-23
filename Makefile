@@ -37,6 +37,6 @@ exec:
 
 create-table:
 	aws dynamodb create-table --endpoint-url http://localhost:8000 --table-name tracks \
- 	--attribute-definitions AttributeName=deviceID,AttributeType=S AttributeName=timestamp,AttributeType=N \
+ 	--attribute-definitions AttributeName=deviceID,AttributeType=S AttributeName=timestamp,AttributeType=S \
  	--key-schema AttributeName=deviceID,KeyType=HASH AttributeName=timestamp,KeyType=RANGE \
  	--provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
